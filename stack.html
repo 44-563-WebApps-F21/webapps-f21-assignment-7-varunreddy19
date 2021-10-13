@@ -38,6 +38,7 @@
         <button onclick="makeNewDiv()">Push value</button>
         <button onclick="popItem()">Pop</button>
         <button onclick="zap()">Zap values</button>
+        <button onclick="unique()">Unique</button>
 
 </body>
 <script>
@@ -62,8 +63,10 @@
     function zap(){
         var stackItems = document.getElementsByClassName("stack")
         let input = document.getElementById("inputTxt").value
+
         if(stackItems!= undefined && stackItems.length >0){
-            for(let i=0; i<stackItems.length; i++){
+            for(let i=0; i<stackItems.length; i++)
+            {
                 if(stackItems[i].innerHTML == input){
                     var itemToBeRemoved = stackItems[i].innerHTML
                     stackItems[i].remove()
@@ -72,6 +75,22 @@
                 }
             }
         }
+    }
+
+    function unique(){
+        var stackItems = document.getElementsByClassName("stack")
+		for(var i=0; i<stackItems.length; i++)
+        {
+			for(var j=i+1; j<stackItems.length; j++)
+            {
+                if(stackItems[i].innerHTML == stackItems[j].innerHTML)
+                {
+                    stackItems[i].remove()
+                    i--
+                    break;
+                }
+            }
+		}
     }
 </script>
 </html>	
